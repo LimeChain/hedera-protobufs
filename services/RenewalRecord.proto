@@ -33,14 +33,15 @@ import "ContractCallLocal.proto";
 
 /* Generated when Hedera Services automatically renew an entity */
 message RenewalRecord {
-	oneof entityID {
-		AccountID accountID = 1; // The id of the renewed account
-		FileID fileID = 2; // The id of the renewed file
-		ContractID contractID = 3; // The id of the renewed contract
-		TopicID topicID = 4; // The id of the renewed topic
-		TokenID tokenID = 5; // The id of the renewed token
-	}
+    oneof entityID {
+        AccountID accountID = 1; // The id of the renewed account
+        FileID fileID = 2; // The id of the renewed file
+        ContractID contractID = 3; // The id of the renewed contract
+        TopicID topicID = 4; // The id of the renewed topic
+        TokenID tokenID = 5; // The id of the renewed token
+    }
     Timestamp consensusTimestamp = 6; // The consensus timestamp of the renewal
     uint64 renewalFee = 7; // The fee charged for the renewal of the entity
     TransferList transferList = 8; // should be {(autoRenewAccount, -renewalFee), (defaultFeeCollectionAccount, renewalFee)}
+    Timestamp newExpiry = 9; // The new expiry of the entity
 }
