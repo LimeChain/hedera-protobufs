@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package proto;
+
+/*-
+ * ‌
+ * Hedera Network Services Protobuf
+ * ​
+ * Copyright (C) 2018 - 2021 Hedera Hashgraph, LLC
+ * ​
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ‍
+ */
+
+option java_package = "com.hederahashgraph.api.proto.java";
+option java_multiple_files = true;
+
+import "Timestamp.proto";
+import "BasicTypes.proto";
+import "TransactionReceipt.proto";
+import "CryptoTransfer.proto";
+import "ContractCallLocal.proto";
+
+/* Generated when Hedera Services automatically renew an entity */
+message RenewalRecord {
+	oneof entityID {
+		AccountID accountID = 1; // The id of the renewed account
+		FileID fileID = 2; // The id of the renewed file
+		ContractID contractID = 3; // The id of the renewed contract
+		TopicID topicID = 4; // The id of the renewed topic
+		TokenID tokenID = 5; // The id of the renewed token
+	}
+    Timestamp consensusTimestamp = 6; // The consensus timestamp of the renewal
+    uint64 renewalFee = 7; // The fee charged for the renewal of the entity
+    TransferList transferList = 8; // should be {(autoRenewAccount, -renewalFee), (defaultFeeCollectionAccount, renewalFee)}
+}
