@@ -52,4 +52,5 @@ or it will be throttled.</li>
 */
 message ThrottleDefinitions {
   repeated ThrottleBucket throttleBuckets = 1;
+  uint64 totalAllowedGasPerSec = 2;
 }
