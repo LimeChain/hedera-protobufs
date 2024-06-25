@@ -1518,4 +1518,14 @@ enum ResponseCodeEnum {
    * The IPv4 address is invalid
    */
   INVALID_IPV4_ADDRESS = 357;
+
+  /**
+   * The transaction attempted to the use an empty List of `PendingAirdropId`.
+   */
+  EMPTY_PENDING_AIRDROP_ID_LIST = 358;
+
+  /**
+   * The transaction attempted to the same `PendingAirdropId` twice.
+   */
+  PENDING_AIRDROP_ID_REPEATED = 359;
 }
